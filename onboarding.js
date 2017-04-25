@@ -20,7 +20,7 @@ var onBoarding = {
       Promise.all(this.tours.map(tour => tour.verify()))
         .then((...args) => {
           if (!this.isAllComplete(...args)) {
-            this.renderOverlay(root, width, height, ...args);        
+            this.renderOverlay(root, width, height, ...args);
           }
       });
     }, 500);
@@ -75,19 +75,49 @@ var onBoarding = {
     });
     overlay.appendChild(tours);
     overlay.appendChild(content_title);
-    this.tours.forEach((tour, idx) => {
+    this.tours.map(tour => {
       let page = tour.page();
-      // TODO: show the first uncomplished item
-      // if (idx !== 0) {
-      //   page.hidden = true;
-      // }
+      page.id = 'page_' + tour.id;
       content.appendChild(page);
     });
+    this._content = content;
     overlay.appendChild(content);
 
     fragment.appendChild(launcher);
     fragment.appendChild(overlay);
     root.appendChild(fragment);
+
+    tours.addEventListener('click', this.handleToursClick.bind(this));
+    this._switchPage();
+  },
+
+  handleToursClick: function(evt) {
+    let target = evt.target;
+    while(target != evt.currentTarget && target.tagName !== 'LI') {
+      target = target.parentElement;
+    }
+    if (target == evt.currentTarget) {
+      return;
+    }
+    let inputElem = target.firstElementChild;
+    this._switchPage(inputElem.id);
+  },
+
+  _switchPage(id) {
+    if (typeof(id) === 'undefined') {
+      id = this._content.firstChild && this._content.firstChild.id;
+    } else {
+      // console.log(id);
+      id = 'page_' + id;
+    }
+
+    for(let i = 0; i < this._content.children.length; i++) {
+      if (this._content.children[i].id == id) {
+        this._content.children[i].hidden = false;
+      } else {
+        this._content.children[i].hidden = true;
+      }
+    }
   },
 
   renderNotification: function() {},
