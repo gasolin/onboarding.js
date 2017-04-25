@@ -1,11 +1,10 @@
 "use strict";
 
 var firefoxSync = {
-      id: "task1",
+      id: "sync",
       // title, badge, ...
       task: { title: "Firefox Sync" },
       // content about this task,
-      // return documentFragment to append to the content
       page: () => {
         let page = document.createElement("div");
         let title = document.createElement("h1");
@@ -24,6 +23,6 @@ var firefoxSync = {
       },
       // set this task as done (call for setAllComplete)
       setComplete: async function() {
-        alert("set task 1 as done");
+        alert("set Firefox Sync tour as done");
       },
 };

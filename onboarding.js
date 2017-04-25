@@ -20,7 +20,6 @@ var onBoarding = {
       //console.log('rule', JSON.stringify(rule));
       Promise.all(this.tours.map(tour => tour.verify()))
         .then((...args) => {
-          //console.log(...args);
           if (!this.isAllComplete(...args)) {
             this.renderOverlay(root, width, height, ...args);        
           }
@@ -33,7 +32,7 @@ var onBoarding = {
   },
 
   renderOverlay: function(root, width, height, args) {
-    alert(`${args.filter(arg => !arg).length} tour left`);
+    alert(`${args.filter(arg => !arg).length} tour(s) left`);
     let fragment = document.createDocumentFragment();
     let launcher = document.createElement("h1");
     launcher.textContent = "Click me";
@@ -78,9 +77,10 @@ var onBoarding = {
     overlay.appendChild(content_title);
     this.tours.forEach((tour, idx) => {
       let page = tour.page();
-      if (idx !== 0) {
-        page.hidden = true;
-      }
+      // TODO: show the first uncomplished item
+      // if (idx !== 0) {
+      //   page.hidden = true;
+      // }
       content.appendChild(page);
     });
     overlay.appendChild(content);

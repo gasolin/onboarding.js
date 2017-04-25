@@ -1,7 +1,7 @@
 "use strict";
 
 var addon = {
-      id: "task2",
+      id: "addon",
       task: { title: "Add-ons" },
       page: () => {
         let page = document.createElement("div");
@@ -19,6 +19,6 @@ var addon = {
         return false;
       },
       setComplete: async function() {
-        alert("set task 2 as done");
+        alert("set addon tour as done");
       },
 };
