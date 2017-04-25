@@ -15,29 +15,35 @@ var onBoarding = {
   tours: [],
 
   init: function(root, tours, width = 480, height = 320) {
-    this.tours = tours;
-    //console.log('rule', JSON.stringify(rule));
-    Promise.all(this.tours.map(tour => tour.verify()))
-      .then((...args) => {
-        //console.log(...args);
-        if (!this.isAllComplete(...args)) {
-          this.renderOverlay(root, width, height, ...args);        
-        }
-    });
+    this.asyncInit = setTimeout(() => {
+      this.tours = tours;
+      //console.log('rule', JSON.stringify(rule));
+      Promise.all(this.tours.map(tour => tour.verify()))
+        .then((...args) => {
+          //console.log(...args);
+          if (!this.isAllComplete(...args)) {
+            this.renderOverlay(root, width, height, ...args);        
+          }
+      });
+    }, 500);
   },
-  
+
+  destroy: function() {
+    clearTimeOut(this.asyncInit);
+  },
+
   renderOverlay: function(root, width, height, args) {
-    alert('new UI!');
+    alert(`${args.filter(arg => !arg).length} tour left`);
     let fragment = document.createDocumentFragment();
     let launcher = document.createElement("h1");
     launcher.textContent = "Click me";
-    
+
     let overlay = document.createElement("div");
     overlay.className = "onboard";
     overlay.hidden = true;
 
     launcher.addEventListener("click", () => {
-      overlay.hidden = overlay.hidden ? false : true; 
+      overlay.hidden = overlay.hidden ? false : true;
     });
 
     let title = document.createElement("h1");
