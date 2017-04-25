@@ -35,6 +35,7 @@ var onBoarding = {
     alert(`${args.filter(arg => !arg).length} tour(s) left`);
     let fragment = document.createDocumentFragment();
     let launcher = document.createElement("h1");
+    launcher.className = "launcher";
     launcher.textContent = "Click me";
 
     let overlay = document.createElement("div");

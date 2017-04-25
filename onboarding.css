@@ -1,3 +1,7 @@
+.launcher {
+  background-color: darkorange;
+}
+
 .onboard {
  width: 320px; /* set with css variable */
  height: 400px; /* set with css variable */
