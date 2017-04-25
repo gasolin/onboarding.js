@@ -15,14 +15,12 @@ var privateBrowsing = {
     page.appendChild(desc);
     return page;
   },
-  // deal with the page
-  pageActoin: function() {},
   // check if this task is done
   verify: async function() {
     return false;
   },
   // set this task as done (call for setAllComplete)
   setComplete: async function() {
-  alert("set Private Browsing tour as done");
+    alert("set Private Browsing tour as done");
   },
 };

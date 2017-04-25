@@ -13,8 +13,6 @@ var addon = {
     page.appendChild(desc);
     return page;
   },
-  pageActoin: function() {
-  },
   verify: async function() {
     return false;
   },

@@ -15,8 +15,6 @@ var oneClickSearch = {
     page.appendChild(desc);
     return page;
   },
-  // deal with the page
-  pageActoin: function() {},
   // check if this task is done
   verify: async function() {
     return false;

@@ -15,14 +15,12 @@ var defaultBrowser = {
     page.appendChild(desc);
     return page;
   },
-  // deal with the page
-  pageActoin: function() {},
   // check if this task is done
   verify: async function() {
     return false;
   },
   // set this task as done (call for setAllComplete)
   setComplete: async function() {
-  alert("set Default Browser tour as done");
+    alert("set Default Browser tour as done");
   },
 };

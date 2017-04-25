@@ -7,7 +7,6 @@ var onBoarding = {
    *   id: 'taskId',
    *   task: { title: 'task title' },
    *   page: {},
-   *   pageAction: function() {},
    *   verify: async function() {},
    *   setComplete: async function() {},
    * },
