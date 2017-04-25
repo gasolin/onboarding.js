@@ -5,13 +5,19 @@
     <script src="firefox-sync.js"></script>
     <script src="add-on.js"></script>
     <script src="one-click-search.js"></script>
+    <script src="customize-firefox.js"></script>
     <script src="onboarding.js"></script>
     <import />
   </head>
   <body>
     <div id="onboard"></div>
     <script>
-      var tours = [firefoxSync, addon, oneClickSearch];
+      var tours = [
+        firefoxSync,
+        addon,
+        oneClickSearch,
+        customizeFirefox
+      ];
       onBoarding.init(document.getElementById("onboard"), tours);
     </script>
   </body>
