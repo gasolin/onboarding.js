@@ -87,11 +87,11 @@ var onBoarding = {
     fragment.appendChild(overlay);
     root.appendChild(fragment);
 
-    tours.addEventListener('click', this.handleToursClick.bind(this));
-    this._switchPage();
+    tours.addEventListener('click', this.clickTourHandler.bind(this));
+    this.switchPage();
   },
 
-  handleToursClick: function(evt) {
+  clickTourHandler: function(evt) {
     let target = evt.target;
     while(target != evt.currentTarget && target.tagName !== 'LI') {
       target = target.parentElement;
@@ -100,23 +100,17 @@ var onBoarding = {
       return;
     }
     let inputElem = target.firstElementChild;
-    this._switchPage(inputElem.id);
+    this.switchPage(inputElem.id);
   },
 
-  _switchPage(id) {
-    if (typeof(id) === 'undefined') {
-      id = this._content.firstChild && this._content.firstChild.id;
-    } else {
-      // console.log(id);
+  switchPage(id) {
+    id = typeof(id) === 'undefined' ?
+      this._content.firstChild && this._content.firstChild.id :
       id = 'page_' + id;
-    }
 
     for(let i = 0; i < this._content.children.length; i++) {
-      if (this._content.children[i].id == id) {
-        this._content.children[i].hidden = false;
-      } else {
-        this._content.children[i].hidden = true;
-      }
+      this._content.children[i].hidden = this._content.children[i].id == id ?
+        false : true;
     }
   },
 
