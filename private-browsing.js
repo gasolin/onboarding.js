@@ -11,8 +11,15 @@ var privateBrowsing = {
     title.textContent = "Browser by yourself.";
     let desc = document.createElement("p");
     desc.textContent = `There's no reason to share your onlin life with trackers every time you browse. Want to keep something to yourself? Use Private Browsing with Tracking Protection.`;
+    let btn = document.createElement("button");
+    let btnTxt = document.createTextNode("Show me Private Browsing");
+    btn.appendChild(btnTxt);
+    btn.addEventListener("click", () => {
+      alert("highlight private browsing!");
+    });
     page.appendChild(title);
     page.appendChild(desc);
+    page.appendChild(btn);
     return page;
   },
   // check if this task is done

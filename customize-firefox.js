@@ -11,8 +11,15 @@ var customizeFirefox = {
     title.textContent = "Rearrange your toolbar.";
     let desc = document.createElement("p");
     desc.textContent = `Put the tools you use most right at your fingertips. Customize mode lets you drag, drop, and reorder the toolbar with built-in features as well as extensions you add yourself.`;
+    let btn = document.createElement("button");
+    let btnTxt = document.createTextNode("Show Me Customize");
+    btn.appendChild(btnTxt);
+    btn.addEventListener("click", () => {
+      alert("highlight customize!");
+    });
     page.appendChild(title);
     page.appendChild(desc);
+    page.appendChild(btn);
     return page;
   },
   // check if this task is done
