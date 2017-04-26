@@ -33,6 +33,7 @@ var onBoarding = {
   renderOverlay: function(root, width, height, args) {
     alert(`${args.filter(arg => !arg).length} tour(s) left`);
     let fragment = document.createDocumentFragment();
+
     let launcher = document.createElement("h1");
     launcher.className = "launcher";
     launcher.textContent = "Click me";
@@ -49,11 +50,9 @@ var onBoarding = {
     listSection.className = "onboarding-tour-list-section";
     let title = document.createElement("h1");
     title.textContent = "Tips for Making Firefox Yours";
-    let tours_title = document.createTextNode("Tours:");
-    let content_title = document.createTextNode("Page Content:");
-    let tours = document.createElement("div");
     overlay.appendChild(title);
-    listSection.appendChild(tours_title);
+
+    let tours = document.createElement("div");
     this.tours.forEach((tour, idx) => {
        //console.log(args[idx]);
        //isComplete = args[idx] ? "v" : "-";
@@ -75,7 +74,6 @@ var onBoarding = {
        tours.appendChild(li);
     });
     listSection.appendChild(tours);
-    listSection.appendChild(content_title);
     overlay.appendChild(listSection);
 
     let content = document.createElement("div");
