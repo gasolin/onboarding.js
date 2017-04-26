@@ -13,14 +13,14 @@ var onBoarding = {
    */
   tours: [],
 
-  init: function(root, tours, width = 480, height = 320) {
+  init: function(root, tours) {
     this.asyncInit = setTimeout(() => {
       this.tours = tours;
       //console.log('rule', JSON.stringify(rule));
       Promise.all(this.tours.map(tour => tour.verify()))
         .then((...args) => {
           if (!this.isAllComplete(...args)) {
-            this.renderOverlay(root, width, height, ...args);
+            this.renderOverlay(root, ...args);
           }
       });
     }, 500);
@@ -30,7 +30,7 @@ var onBoarding = {
     clearTimeOut(this.asyncInit);
   },
 
-  renderOverlay: function(root, width, height, args) {
+  renderOverlay: function(root, args) {
     alert(`${args.filter(arg => !arg).length} tour(s) left`);
     let fragment = document.createDocumentFragment();
 
