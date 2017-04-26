@@ -63,7 +63,7 @@ body {
 
 .onboarding-tour-list-section > div > li {
   display: block;
-  height: 24px;
+  min-height: 24px;
   padding-left: 6px;
   border-left: 6px solid #5CE6E6;
   position: relative;
