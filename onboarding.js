@@ -45,14 +45,15 @@ var onBoarding = {
       overlay.hidden = overlay.hidden ? false : true;
     });
 
+    let listSection = document.createElement("section");
+    listSection.className = "onboarding-tour-list-section";
     let title = document.createElement("h1");
     title.textContent = "Tips for Making Firefox Yours";
     let tours_title = document.createTextNode("Tours:");
     let content_title = document.createTextNode("Page Content:");
     let tours = document.createElement("div");
-    let content = document.createElement("div");
     overlay.appendChild(title);
-    overlay.appendChild(tours_title);
+    listSection.appendChild(tours_title);
     this.tours.forEach((tour, idx) => {
        //console.log(args[idx]);
        //isComplete = args[idx] ? "v" : "-";
@@ -73,8 +74,12 @@ var onBoarding = {
        //li.textContent = `${isComplete} rule.task.title`
        tours.appendChild(li);
     });
-    overlay.appendChild(tours);
-    overlay.appendChild(content_title);
+    listSection.appendChild(tours);
+    listSection.appendChild(content_title);
+    overlay.appendChild(listSection);
+
+    let content = document.createElement("div");
+    content.className = 'onboarding-tour-page-section';
     this.tours.map(tour => {
       let page = tour.page();
       page.id = 'page_' + tour.id;
