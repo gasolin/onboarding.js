@@ -38,6 +38,15 @@ body {
   grid-column: 1 / 4;
   grid-row: 1 / 2;
 }
+
+.onboard > .closeBtn {
+  position: absolute;
+  width: 52px;
+  height: 40px;
+  top: 30px;
+  right: 30px;
+}
+
 .hidden {
   display: none;
 }

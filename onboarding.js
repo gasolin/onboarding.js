@@ -41,6 +41,12 @@ var onBoarding = {
     let overlay = document.createElement("div");
     overlay.className = "onboard";
     overlay.hidden = true;
+    let closeBtn = document.createElement("button");
+    closeBtn.className = "closeBtn";
+    closeBtn.addEventListener("click", () => {
+      overlay.hidden = true;
+    });
+    overlay.appendChild(closeBtn);
 
     launcher.addEventListener("click", () => {
       overlay.hidden = overlay.hidden ? false : true;
